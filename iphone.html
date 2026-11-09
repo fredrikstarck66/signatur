@@ -2,8 +2,16 @@
 <html lang="sv"><head><meta charset="utf-8">
 <meta name="viewport" content="width=520">
 <meta name="color-scheme" content="light only">
-<title>Signatur</title></head>
-<body style="margin:0;padding:12px;background:#ffffff;">
+<title>Signatur</title>
+<style>
+ body{margin:0;padding:16px;background:#fff;font-family:-apple-system,Helvetica,Arial,sans-serif}
+ #knapp{display:block;width:480px;padding:18px;margin:0 0 10px;font-size:22px;font-weight:600;color:#fff;background:#1c2433;border:0;border-radius:12px}
+ #status{width:480px;min-height:26px;font-size:17px;color:#1a7f37;margin-bottom:18px}
+</style></head>
+<body>
+<button id="knapp" type="button">Kopiera signaturen</button>
+<div id="status"></div>
+<div id="sig" contenteditable="true" style="outline:none;">
 <table cellpadding="0" cellspacing="0" border="0" width="480" bgcolor="#ffffff" style="width:480px;background:#ffffff;border-collapse:collapse;color:#1c2433;">
   <tr>
     <td width="136" style="width:136px;vertical-align:top;padding:0;"><img src="https://fredrikstarck66.github.io/signatur/foto.jpg" width="136" height="205" alt="Drönare över skärgården" style="display:block;border:0;width:136px;height:205px;"></td>
@@ -40,9 +48,24 @@
     <td colspan="2" style="padding:12px 0 0 0;">
       <div style="height:1px;background:#d5d9e0;font-size:0;line-height:0;">&nbsp;</div>
       <table cellpadding="0" cellspacing="0" border="0" style="margin-top:12px;border-collapse:collapse;"><tr>
-        <td style="white-space:nowrap;vertical-align:middle;"><a href="https://starckphotography.com" style="color:#1c2433;text-decoration:none;"><img src="https://fredrikstarck66.github.io/signatur/ikon-webb.png" width="14" height="14" alt="" style="display:inline-block;vertical-align:middle;border:0;margin-right:5px;"><span style="font-family:-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;color:#1c2433;text-decoration:underline;vertical-align:middle;">starckphotography.com</span></a></td><td style="padding:0 8px;"><div style="width:1px;height:16px;background:#d5d9e0;"></div></td><td style="white-space:nowrap;vertical-align:middle;"><a href="https://starckdrone.com" style="color:#1c2433;text-decoration:none;"><img src="https://fredrikstarck66.github.io/signatur/ikon-dronare.png" width="14" height="14" alt="" style="display:inline-block;vertical-align:middle;border:0;margin-right:5px;"><span style="font-family:-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;color:#1c2433;text-decoration:underline;vertical-align:middle;">starckdrone.com</span></a></td><td style="padding:0 8px;"><div style="width:1px;height:16px;background:#d5d9e0;"></div></td><td style="white-space:nowrap;vertical-align:middle;"><a href="https://fredrikstarck.myportfolio.com/" style="color:#1c2433;text-decoration:none;"><img src="https://fredrikstarck66.github.io/signatur/ikon-portfolio.png" width="14" height="14" alt="" style="display:inline-block;vertical-align:middle;border:0;margin-right:5px;"><span style="font-family:-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;color:#1c2433;text-decoration:underline;vertical-align:middle;">Portfolio</span></a></td><td style="padding:0 8px;"><div style="width:1px;height:16px;background:#d5d9e0;"></div></td><td style="white-space:nowrap;vertical-align:middle;"><a href="https://www.instagram.com/fredrik_starck/" style="color:#1c2433;text-decoration:none;"><img src="https://fredrikstarck66.github.io/signatur/ikon-instagram.png" width="14" height="14" alt="" style="display:inline-block;vertical-align:middle;border:0;margin-right:5px;"><span style="font-family:-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;color:#1c2433;text-decoration:underline;vertical-align:middle;">Instagram</span></a></td>
+        <td style="white-space:nowrap;vertical-align:middle;"><a href="https://starckphotography.com" style="color:#1c2433;text-decoration:none;"><img src="https://fredrikstarck66.github.io/signatur/ikon-webb.png" width="14" height="14" alt="" style="display:inline-block;vertical-align:middle;border:0;margin-right:5px;"><span style="font-family:-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;color:#1c2433;text-decoration:underline;vertical-align:middle;">starckphotography.com</span></a></td><td style="padding:0 8px;"><div style="width:1px;height:16px;background:#d5d9e0;"></div></td><td style="white-space:nowrap;vertical-align:middle;"><a href="https://starckdrone.com" style="color:#1c2433;text-decoration:none;"><img src="https://fredrikstarck66.github.io/signatur/ikon-dronare.png" width="14" height="14" alt="" style="display:inline-block;vertical-align:middle;border:0;margin-right:5px;"><span style="font-family:-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;color:#1c2433;text-decoration:underline;vertical-align:middle;">starckdrone.com</span></a></td><td style="padding:0 8px;"><div style="width:1px;height:16px;background:#d5d9e0;"></div></td><td style="white-space:nowrap;vertical-align:middle;"><a href="https://www.instagram.com/fredrik_starck/" style="color:#1c2433;text-decoration:none;"><img src="https://fredrikstarck66.github.io/signatur/ikon-instagram.png" width="14" height="14" alt="" style="display:inline-block;vertical-align:middle;border:0;margin-right:5px;"><span style="font-family:-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:11px;color:#1c2433;text-decoration:underline;vertical-align:middle;">Instagram</span></a></td>
       </tr></table>
     </td>
   </tr>
 </table>
+</div>
+<script>
+const knapp=document.getElementById('knapp'), status=document.getElementById('status'), sig=document.getElementById('sig');
+function markera(){const r=document.createRange(); r.selectNodeContents(sig); const s=window.getSelection(); s.removeAllRanges(); s.addRange(r);}
+knapp.addEventListener('click', async ()=>{
+  const html=sig.innerHTML, text=sig.innerText;
+  try {
+    await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([text],{type:'text/plain'})})]);
+    status.textContent='\u2713 Kopierad! G\u00e5 till Inst\u00e4llningar \u2192 Appar \u2192 Mail \u2192 Signatur och klistra in.';
+  } catch(e) {
+    markera(); let ok=false; try{ok=document.execCommand('copy');}catch(_){}
+    status.textContent= ok ? '\u2713 Kopierad! Klistra in under Inst\u00e4llningar \u2192 Appar \u2192 Mail \u2192 Signatur.' : 'Signaturen \u00e4r markerad \u2013 tryck p\u00e5 Kopiera.';
+  }
+});
+</script>
 </body></html>
